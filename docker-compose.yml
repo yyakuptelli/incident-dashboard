@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: adl_postgres
+    environment:
+      POSTGRES_USER: adl_user
+      POSTGRES_PASSWORD: adl_pass
+      POSTGRES_DB: adl_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: adl_backend
+    ports:
+      - '3001:3001'
+    environment:
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_USER: adl_user
+      DATABASE_PASSWORD: adl_pass
+      DATABASE_NAME: adl_db
+      PORT: 3001
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+    depends_on:
+      - postgres
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: adl_frontend
+    ports:
+      - '3000:3000'
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+      NEXT_PUBLIC_WS_URL: http://localhost:3001
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
