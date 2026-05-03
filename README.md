@@ -16,9 +16,9 @@ Real-time incident management dashboard. Helps software teams track service outa
 |------------|--------------|
 | ![AI Suggest](screenshots/ai-suggest.png) | ![Edit Incident](screenshots/edit-incident.png) |
 
-| Incident Detail & Audit Log |
-|-----------------------------|
-| ![Incident Detail](screenshots/incident-detail.png) |
+| Incident Detail & Audit Log | Real-time Connection Status |
+|-----------------------------|-----------------------------|
+| ![Incident Detail](screenshots/incident-detail.png) | ![Real-time Disconnected](screenshots/realtime-disconnected.png) |
 
 ---
 
