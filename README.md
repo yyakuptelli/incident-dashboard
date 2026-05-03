@@ -29,20 +29,22 @@ Real-time incident management dashboard. Helps software teams track service outa
 - Node.js 18+
 - Docker & Docker Compose
 
-### 1. Clone the repository
+### Option A — Local Development
+
+**1. Clone the repository**
 
 ```bash
 git clone https://github.com/yyakuptelli/incident-dashboard.git
 cd incident-dashboard
 ```
 
-### 2. Start the database
+**2. Start the database**
 
 ```bash
 docker compose up -d postgres
 ```
 
-### 3. Backend
+**3. Backend**
 
 ```bash
 cd backend
@@ -55,38 +57,53 @@ npm run start:dev
 | http://localhost:3001 | REST API |
 | http://localhost:3001/api/docs | Swagger UI |
 
-### 4. Load sample data (optional)
+**4. Load sample data (optional)**
 
-If running locally:
 ```bash
-cd backend
 npm run seed
 ```
 
-If running with Docker:
-```bash
-docker compose exec backend node dist/seed.js
-```
-
-### 5. Frontend
+**5. Frontend**
 
 ```bash
-cd frontend
+cd ../frontend
 npm install
 npm run dev
 ```
 
 Frontend: http://localhost:3000
 
-### Full stack — with Docker
+---
+
+### Option B — Full Stack with Docker
+
+**1. Clone the repository**
 
 ```bash
-# Create .env and .env.docker (GROQ_API_KEY optional)
+git clone https://github.com/yyakuptelli/incident-dashboard.git
+cd incident-dashboard
+```
+
+**2. Set up environment**
+
+```bash
 cp backend/.env.example backend/.env
 cp backend/.env backend/.env.docker
+```
 
+**3. Start all services**
+
+```bash
 docker compose up --build
 ```
+
+**4. Load sample data (optional)**
+
+```bash
+docker compose exec backend node dist/seed.js
+```
+
+Frontend: http://localhost:3000
 
 > Without `GROQ_API_KEY` the AI feature is disabled; all other features continue to work.
 
