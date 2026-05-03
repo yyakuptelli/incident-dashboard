@@ -57,9 +57,15 @@ npm run start:dev
 
 ### 4. Load sample data (optional)
 
+If running locally:
 ```bash
 cd backend
 npm run seed
+```
+
+If running with Docker:
+```bash
+docker compose exec backend node dist/seed.js
 ```
 
 ### 5. Frontend
