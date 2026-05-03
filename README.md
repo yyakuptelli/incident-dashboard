@@ -81,7 +81,8 @@ Frontend: http://localhost:3000
 ### Full stack — with Docker
 
 ```bash
-# Create .env.docker (GROQ_API_KEY required)
+# Create .env and .env.docker (GROQ_API_KEY optional)
+cp backend/.env.example backend/.env
 cp backend/.env backend/.env.docker
 
 docker compose up --build
