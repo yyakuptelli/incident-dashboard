@@ -79,6 +79,11 @@ npm run start:dev
 
 **5. Load sample data (optional)**
 
+> If you previously ran the seed (e.g. switching from Option B), clear existing data first:
+> ```bash
+> psql -h localhost -U adl_user -d adl_db -c "TRUNCATE incidents CASCADE;"
+> ```
+
 ```bash
 npm run seed
 ```
@@ -121,6 +126,11 @@ docker compose up --build
 
 **4. Load sample data (optional)**
 
+> If you previously ran the seed (e.g. switching from Option A), clear existing data first:
+> ```bash
+> docker compose exec postgres psql -U adl_user -d adl_db -c "TRUNCATE incidents CASCADE;"
+> ```
+
 ```bash
 docker compose exec backend node dist/seed.js
 ```
@@ -132,6 +142,8 @@ Frontend: http://localhost:3000
 ---
 
 ## Environment Variables
+
+> This section applies to **Option A (Local Development)**. For Option B (Docker), set `GROQ_API_KEY` using the `echo` command in step 2 of that section.
 
 A `backend/.env.example` file is included in the repository with all values pre-filled. Copy it and set your Groq API key:
 
@@ -164,7 +176,6 @@ npm run start:dev
 
 **Docker:**
 ```bash
-cp backend/.env backend/.env.docker
 docker compose down
 docker compose up --build
 ```
