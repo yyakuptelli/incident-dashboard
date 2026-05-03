@@ -43,7 +43,7 @@ export class AiService {
 
   async analyze(title: string, description?: string): Promise<AiAnalysisResult> {
     if (!this.client) {
-      throw new ServiceUnavailableException('AI features are not configured. Set XAI_API_KEY in .env');
+      throw new ServiceUnavailableException('AI features are not configured. Set GROQ_API_KEY in .env');
     }
 
     const userContent = description?.trim()
