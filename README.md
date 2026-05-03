@@ -44,7 +44,27 @@ cd incident-dashboard
 docker compose up -d postgres
 ```
 
-**3. Backend**
+**3. Set up environment**
+
+```bash
+cp backend/.env.example backend/.env
+```
+
+To enable AI features, add your Groq API key ([get one free](https://console.groq.com)):
+
+**macOS:**
+```bash
+sed -i '' 's/GROQ_API_KEY=/GROQ_API_KEY=your_key_here/' backend/.env
+```
+
+**Linux:**
+```bash
+sed -i 's/GROQ_API_KEY=/GROQ_API_KEY=your_key_here/' backend/.env
+```
+
+**Windows:** Open `backend/.env` and set `GROQ_API_KEY=your_key_here`.
+
+**4. Backend**
 
 ```bash
 cd backend
@@ -57,13 +77,13 @@ npm run start:dev
 | http://localhost:3001 | REST API |
 | http://localhost:3001/api/docs | Swagger UI |
 
-**4. Load sample data (optional)**
+**5. Load sample data (optional)**
 
 ```bash
 npm run seed
 ```
 
-**5. Frontend**
+**6. Frontend**
 
 ```bash
 cd ../frontend
@@ -87,9 +107,11 @@ cd incident-dashboard
 **2. Set up environment**
 
 ```bash
-cp backend/.env.example backend/.env
-cp backend/.env backend/.env.docker
+# Required for Docker Compose variable substitution
+echo "GROQ_API_KEY=your_key_here" > .env
 ```
+
+> `GROQ_API_KEY` is optional — omit this step to run without AI features.
 
 **3. Start all services**
 
@@ -130,6 +152,22 @@ sed -i 's/GROQ_API_KEY=/GROQ_API_KEY=your_key_here/' backend/.env
 **Windows:** Open `backend/.env` in any text editor and set `GROQ_API_KEY=your_key_here`.
 
 Replace `your_key_here` with your actual key from https://console.groq.com (free). AI features are optional — omit this step to run without them.
+
+After adding or changing `GROQ_API_KEY`, restart the backend:
+
+**Local:**
+```bash
+# Stop the running backend (Ctrl+C), then:
+cd backend
+npm run start:dev
+```
+
+**Docker:**
+```bash
+cp backend/.env backend/.env.docker
+docker compose down
+docker compose up --build
+```
 
 ---
 
