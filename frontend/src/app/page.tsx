@@ -115,7 +115,7 @@ export default function Home() {
         )}
 
         {!loading && !error && displayList.length === 0 && (
-          <div className="text-center py-20 text-gray-400">
+          <div className="text-center py-20 text-gray-400 select-none cursor-default">
             <p className="text-5xl mb-3">📋</p>
             <p className="font-medium text-gray-500">No incidents found</p>
             <p className="text-sm mt-1">Create a new incident or adjust your filters</p>
