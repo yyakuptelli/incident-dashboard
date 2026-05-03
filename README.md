@@ -29,13 +29,20 @@ Real-time incident management dashboard. Helps software teams track service outa
 - Node.js 18+
 - Docker & Docker Compose
 
-### 1. Start the database
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yyakuptelli/incident-dashboard.git
+cd incident-dashboard
+```
+
+### 2. Start the database
 
 ```bash
 docker compose up -d postgres
 ```
 
-### 2. Backend
+### 3. Backend
 
 ```bash
 cd backend
@@ -48,14 +55,14 @@ npm run start:dev
 | http://localhost:3001 | REST API |
 | http://localhost:3001/api/docs | Swagger UI |
 
-### 3. Load sample data (optional)
+### 4. Load sample data (optional)
 
 ```bash
 cd backend
 npm run seed
 ```
 
-### 4. Frontend
+### 5. Frontend
 
 ```bash
 cd frontend
