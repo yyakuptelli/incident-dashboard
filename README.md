@@ -111,23 +111,25 @@ Frontend: http://localhost:3000
 
 ## Environment Variables
 
-A `backend/.env.example` file is included in the repository with all values pre-filled. Copy it and add your Groq API key:
+A `backend/.env.example` file is included in the repository with all values pre-filled. Copy it and set your Groq API key:
 
 ```bash
 cp backend/.env.example backend/.env
 ```
 
-Then open `backend/.env` and set `GROQ_API_KEY`:
-
-```env
-DATABASE_HOST=localhost
-DATABASE_PORT=5432
-DATABASE_USER=adl_user
-DATABASE_PASSWORD=adl_pass
-DATABASE_NAME=adl_db
-PORT=3001
-GROQ_API_KEY=gsk_your_key_here   # https://console.groq.com — free
+**macOS:**
+```bash
+sed -i '' 's/GROQ_API_KEY=/GROQ_API_KEY=your_key_here/' backend/.env
 ```
+
+**Linux:**
+```bash
+sed -i 's/GROQ_API_KEY=/GROQ_API_KEY=your_key_here/' backend/.env
+```
+
+**Windows:** Open `backend/.env` in any text editor and set `GROQ_API_KEY=your_key_here`.
+
+Replace `your_key_here` with your actual key from https://console.groq.com (free). AI features are optional — omit this step to run without them.
 
 ---
 
