@@ -289,3 +289,13 @@ frontend/src/
 - **Metrics** — Prometheus endpoint + Grafana dashboard
 - **E2E Tests** — Full end-to-end tests with Supertest against a real database
 - **Service Autocomplete** — Dropdown that suggests existing service names in the filter input
+
+---
+
+## Running Tests
+
+```bash
+cd backend
+npm test          # unit tests (16 tests)
+npm run test:e2e  # integration test — requires the database to be running
+```
